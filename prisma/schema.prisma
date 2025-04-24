@@ -1,0 +1,21 @@
+// schema.prisma
+
+// Bloco de conexão com o banco de dados
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+// Bloco para configuração do Prisma Client
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Modelo de tarefa
+model Task {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  status      String   @default("pendente")
+  createdAt   DateTime @default(now())
+}
